@@ -14,9 +14,9 @@ def getData(name, translate=False):
     else:
         poke_res_dict = poke_res.json()
         pokemon = dict()
-
+        
         pokemon['name'] = poke_res_dict['name']
-        pokemon['description'] = poke_res_dict['flavor_text_entries'][0]['flavor_text'].replace("\n", " ").replace("\x0c", " ")
+        pokemon['description'] = fetchDesc(poke_res_dict) #poke_res_dict['flavor_text_entries'][0]['flavor_text'].replace("\n", " ").replace("\x0c", " ")
         pokemon['habitat'] = poke_res_dict['habitat']['name']
         pokemon['is_legendary'] = poke_res_dict['is_legendary']
 
@@ -46,6 +46,12 @@ def getData(name, translate=False):
                 return pokemon
         else:
             return pokemon
+
+def fetchDesc(r_dict):
+    for k in r_dict['flavor_text_entries']:
+        if k['language']['name'] == "en":
+            val = r_dict['flavor_text_entries'].index(k)
+    return r_dict['flavor_text_entries'][val]['flavor_text'].replace("\n", " ").replace("\x0c", " ")
 
 
 
