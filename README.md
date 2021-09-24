@@ -1,4 +1,4 @@
-**Pokedex API app**
+# Pokedex API app
 
 - This app exposes two API endpoints, one normal, and one with a fun translation of the data on Pokemon, i.e its name, description, habitat and legendary status.
 
@@ -10,32 +10,33 @@
 
 To install Python3 on Linux(ubuntu), run the following commands or visit:
 
-`        `sudo apt-get install software-properties-common
-`           `sudo add-apt-repository ppa:deadsnakes/ppa
-`           `sudo apt-get update && sudo apt-get install python3 -y
+        sudo apt-get install software-properties-common
+        sudo add-apt-repository ppa:deadsnakes/ppa
+        sudo apt-get update && sudo apt-get install python3 -y
 
 - Once python is installed, install flask using requirements.txt:
          
-  `          `pip3 install -r requirements.txt
+        pip3 install -r requirements.txt
 
 - Once the pre-requisites are installed, you will run the flask server in development mode by setting the environment variable as follows:
-  `                    `export FLASK\_ENV=development
+        `export FLASK\_ENV=development
 
 - Then run the flask server on port 5000 in the backdround with the command:
            
-  `           `nohup python3 app.py &
+        nohup python3 app.py &
 
 
 - To access the endpoints from your local machine, use the URLs as follows:
              
-  `          `http://localhost:5000/pokemon/<pokemon\_name>
-  `              `&
-  `             `http://localhost:5000/pokemon/translated/<pokemon\_name>
+  http://localhost:5000/pokemon/<pokemon\_name>
+  &
+  http://localhost:5000/pokemon/translated/<pokemon\_name>
+  
 - Endpoint 1 description:
 
   Given a Pokemon’s name, the endpoint returns its name, standard Pokemon description, habitat and legendary status.
 
-`                  `[http://localhost:5000/pokemon/<pokemon_name](http://localhost:5000/pokemon/%3cpokemon_name)>
+       http://localhost:5000/pokemon/<pokemon_name>
 
 - Endpoint 2 description:
  
@@ -46,24 +47,24 @@ To install Python3 on Linux(ubuntu), run the following commands or visit:
 
 
 
-`                          `[http://localhost:5000/pokemon/translated/<pokemon_name](http://localhost:5000/pokemon/translated/%3cpokemon_name)>
-
+          http://localhost:5000/pokemon/translated/<pokemon_name>
+         
 - If you are using Docker with dockerfile to run, you can do so by running the following commands:
 
-  `      `docker build -t pokedex\_img .
+        docker build -t pokedex\_img .
 
-`       `docker run -p 5000:5000 -t –name pokedex-app pokedex\_img
+        docker run -p 5000:5000 -t –name pokedex-app pokedex\_img
 
 - If you are using the manifest to deploy in Kubernetes, you can create the deployment using the file “poke-dep.yml” and the following command:
 
-  `                `kubectl create -f poke-dep.yml
+          kubectl create -f poke-dep.yml
 
   This deployment uses NodePort with 2 replicas, and uses the port for NodePort service as 30500. 
   To access the API endpoint, get the URL using:
-  `                  `service pokedex-api-service –url
+           `service pokedex-api-service –url
 
 
-
+## Production Changes
 
 - If we are to run the server in production, I’d advise using a webserver with it and as well a message queue like RabbitMQ so that the API can be accessible simultaneously to large audience. 
 
