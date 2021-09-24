@@ -66,7 +66,10 @@ To install Python3 on Linux(ubuntu), run the following commands or visit:
 
 ## Production Changes
 
-- If we are to run the server in production, I’d advise using a webserver with it and as well a message queue like RabbitMQ so that the API can be accessible simultaneously to large audience. 
+- If we are to run the server in production, I’d advise using a webserver along with a Load Balancer/HAProxy in front of it with a WSGI server to communicate with the Flask server. 
+- If running in a Kubernetes cluster, change the value of the "type" field under Service in "poke-dep.yml" from NodePort to LoadBalancer.
+ 
+- As well as implement a message queue like RabbitMQ with the app so that the API can be accessible simultaneously to large audience. 
 
 ## Test Cases and API Documentation
 
