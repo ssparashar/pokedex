@@ -4,7 +4,7 @@ import requests
 from urllib.request import urlopen
 
 
-r = requests.get('https://pokeapi.co/api/v2/pokemon-species/moltres/')
+r = requests.get('https://pokeapi.co/api/v2/pokemon-species/pikachu/')
 
 #with urlopen("https://pokeapi.co/api/v2/pokemon-species/jigglypuff/") as response:
 #    source = response.read()

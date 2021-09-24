@@ -1,5 +1,5 @@
-from flask import Flask, json, request
-from retrieve import *
+from flask import Flask, json
+from retrieve import * 
 
 api = Flask(__name__)
 
