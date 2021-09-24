@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pokedex-api
+  name: pokedex-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pokedex-api-pod
+  template:
+    metadata:
+      labels:
+        app: pokedex-api-pod
+    spec:
+      containers:
+      - name: pokedex-api
+        image: ssparashar/pokedex:latest
+        ports:
+        - containerPort: 5000
+      restartPolicy: Always
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pokedex-api
+  name: pokedex-api-service
+spec:
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30500
+  selector:
+    app: pokedex-api-pod
+  type: NodePort
+
