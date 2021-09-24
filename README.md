@@ -36,7 +36,7 @@ To install Python3 on Linux(ubuntu), run the following commands or visit:
 
   Given a Pokemon’s name, the endpoint returns its name, standard Pokemon description, habitat and legendary status.
 
-       [http://localhost:5000/pokemon/<pokemon_name](http://localhost:5000/pokemon/%3cpokemon_name)>
+       http://localhost:5000/pokemon/<pokemon_name>
 
 - Endpoint 2 description:
  
@@ -47,8 +47,8 @@ To install Python3 on Linux(ubuntu), run the following commands or visit:
 
 
 
-         [http://localhost:5000/pokemon/translated/<pokemon_name](http://localhost:5000/pokemon/translated/%3cpokemon_name)>
-
+          http://localhost:5000/pokemon/translated/<pokemon_name>
+         
 - If you are using Docker with dockerfile to run, you can do so by running the following commands:
 
         `docker build -t pokedex\_img .
